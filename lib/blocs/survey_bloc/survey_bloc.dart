@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:survey/data/survey_repo.dart';
 
 part 'survey_event.dart';
