@@ -8,19 +8,19 @@ class APIRequestSurvey {
       dynamic scrg, String url, Map<String, String> urlHeaders) async {
     NetworkResponseData response;
     String? uuid;
-    try {
-      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-      if (Platform.isIOS) {
-        IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
-        uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
-      }
-      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-      uuid = androidDeviceInfo.id; // unique ID on Android
-    } catch (deviceInfoInitializationError) {}
+
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) {
+      IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+      uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
+    }
+    AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
+    uuid = androidDeviceInfo.id; // unique ID on Android
+
     try {
       response = await ApiHandler.getRequest(
         customHeaders: urlHeaders,
-        url: url.replaceAll('{scrgval}', scrg).replaceAll('{uuidval}', uuid!),
+        url: url.replaceAll('{scrgval}', scrg).replaceAll('{uuidval}', uuid),
         apiFailureMessage: 'Unable to get tips',
       );
     } catch (apiRequestError) {

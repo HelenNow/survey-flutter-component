@@ -30,7 +30,7 @@ class SurveyPage extends StatefulWidget {
   final Color? loadingIndicatorColor;
   final bool isRtl;
 
-  SurveyPage({
+  const SurveyPage({
     this.scrg,
     this.backArrowColor,
     this.decoration,
@@ -149,7 +149,7 @@ class _SurveyPageState extends State<SurveyPage> {
                       children: [
                         Container(
                           padding: widget.paddingGeneral ??
-                              EdgeInsets.symmetric(
+                              const EdgeInsets.symmetric(
                                 horizontal: ConfigConstants.paddingGeneral,
                               ),
                           alignment: widget.isRtl
@@ -172,7 +172,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.vertical,
-                          padding: EdgeInsets.all(30),
+                          padding: const EdgeInsets.all(30),
                           itemCount: result.length,
                           shrinkWrap: true,
                           // list item builder
