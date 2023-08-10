@@ -8,7 +8,7 @@ class SurveyInitial extends SurveyState {}
 class SurveyInProgress extends SurveyState {}
 
 class SurveySuccess extends SurveyState {
-  var data;
+  final dynamic data;
   SurveySuccess({this.data});
 }
 

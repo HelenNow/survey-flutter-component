@@ -3,12 +3,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:survey/widgets/colors.dart';
 
 class SurveyQuestionRating extends StatefulWidget {
-  String title;
-  dynamic handle;
-  bool isReq;
-  Color? textcolorsurvey;
-  Color? requiredcolor;
-  SurveyQuestionRating(
+  final String title;
+  final dynamic handle;
+  final bool isReq;
+  final Color? textcolorsurvey;
+  final Color? requiredcolor;
+  const SurveyQuestionRating(
       {required this.title,
       required this.handle,
       required this.isReq,

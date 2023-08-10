@@ -4,6 +4,6 @@ part of 'post_survey_bloc.dart';
 abstract class PostSurveyEvent {}
 
 class PostSurveyEventRequested extends PostSurveyEvent {
-  var body;
+  final dynamic body;
   PostSurveyEventRequested({this.body});
 }

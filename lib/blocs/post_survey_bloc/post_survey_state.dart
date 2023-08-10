@@ -8,7 +8,7 @@ class PostSurveyInitial extends PostSurveyState {}
 class PostSurveyInProgress extends PostSurveyState {}
 
 class PostSurveySuccess extends PostSurveyState {
-  var data;
+  final dynamic data;
   PostSurveySuccess({this.data});
 }
 

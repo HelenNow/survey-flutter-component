@@ -4,6 +4,6 @@ part of 'survey_bloc.dart';
 abstract class SurveyEvent {}
 
 class SurveyEventRequested extends SurveyEvent {
-  var scrg;
+  final dynamic scrg;
   SurveyEventRequested({this.scrg});
 }

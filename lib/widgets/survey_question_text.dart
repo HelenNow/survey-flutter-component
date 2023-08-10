@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:survey/widgets/colors.dart';
+
 class SurveyQuestionText extends StatefulWidget {
-  String title;
-  dynamic handle;
-  bool isReq;
-  Color? textcolorsurvey;
-  Color? requiredcolor;
-  SurveyQuestionText(
+  final String title;
+  final dynamic handle;
+  final bool isReq;
+  final Color? textcolorsurvey;
+  final Color? requiredcolor;
+  const SurveyQuestionText(
       {required this.title,
       required this.handle,
       required this.isReq,

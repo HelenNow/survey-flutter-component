@@ -13,22 +13,22 @@ import 'package:survey/widgets/survey_model.dart';
 import 'package:survey/widgets/toast.dart';
 
 class SurveyPage extends StatefulWidget {
-  String? scrg;
-  String? rbrg;
-  Decoration? decoration;
-  Color? backArrowColor;
-  Color? submitButtonDisabledColor;
-  Color? submitButtonenabledColor;
-  Color? submitButtonTextColor;
-  EdgeInsets? paddingGeneral;
-  int? submitButtonTextSize;
-  Color? radioActiveColor;
-  Color? radioTextcoLOR;
-  String? uuid;
-  Color? requiredStarColor;
-  VoidCallback? goBackOnSubmit;
-  Color? loadingIndicatorColor;
-  bool isRtl;
+  final String? scrg;
+  final String? rbrg;
+  final Decoration? decoration;
+  final Color? backArrowColor;
+  final Color? submitButtonDisabledColor;
+  final Color? submitButtonenabledColor;
+  final Color? submitButtonTextColor;
+  final EdgeInsets? paddingGeneral;
+  final int? submitButtonTextSize;
+  final Color? radioActiveColor;
+  final Color? radioTextcoLOR;
+  final String? uuid;
+  final Color? requiredStarColor;
+  final VoidCallback? goBackOnSubmit;
+  final Color? loadingIndicatorColor;
+  final bool isRtl;
 
   SurveyPage({
     this.scrg,
@@ -57,8 +57,8 @@ class SurveyPage extends StatefulWidget {
 class _SurveyPageState extends State<SurveyPage> {
   var answers = {};
   ValueNotifier<bool> submitActive = ValueNotifier(false);
-  var body;
-  var postBody;
+  dynamic body;
+  dynamic postBody;
   @override
   void initState() {
     BlocProvider.of<SurveyBloc>(context)
