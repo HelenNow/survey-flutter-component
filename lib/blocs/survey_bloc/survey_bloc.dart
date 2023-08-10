@@ -6,12 +6,12 @@ part 'survey_event.dart';
 part 'survey_state.dart';
 
 class SurveyBloc extends Bloc<SurveyEvent, SurveyState> {
-  SurveyBloc(String url, Map<String, String> headers) : super(SurveyInitial()) {
+  SurveyBloc(String getUrl, Map<String, String> headers) : super(SurveyInitial()) {
     on<SurveyEventRequested>((event, emit) async {
       emit(SurveyInProgress());
       try {
         var response =
-            await APIRequestSurvey.getSurveyQuestions(event.scrg, url, headers,);
+            await APIRequestSurvey.getSurveyQuestions(event.scrg, getUrl, headers,);
         emit(SurveySuccess(data: response));
       } catch (e) {
         emit(SurveyFailed());

@@ -407,10 +407,11 @@ class _SurveyPageState extends State<SurveyPage> {
   }
 }
 
-showSurvey(
-  BuildContext context,
-  String url,
-  Map<String, String> headers,
+showSurvey({
+  required BuildContext context,
+  required String getUrl,
+  required String postUrl,
+  required Map<String, String> headers,
   String? scrg,
   String? rbrg,
   Decoration? decoration,
@@ -426,8 +427,8 @@ showSurvey(
   Color? requiredStarColor,
   VoidCallback? goBackOnSubmit,
   Color? loadingIndicatorColor,
-  bool isRtl,
-) {
+  bool? isRtl,
+}) {
   Navigator.push(
     context,
     MaterialPageRoute<SurveyPage>(
@@ -435,10 +436,11 @@ showSurvey(
         return MultiBlocProvider(
             providers: [
               BlocProvider<SurveyBloc>(
-                  create: (BuildContext context) => SurveyBloc(url, headers)),
+                  create: (BuildContext context) =>
+                      SurveyBloc(getUrl, headers)),
               BlocProvider<PostSurveyBloc>(
                   create: (BuildContext context) =>
-                      PostSurveyBloc(url, headers)),
+                      PostSurveyBloc(postUrl, headers)),
             ],
             child: SurveyPage(
               scrg: scrg,
@@ -456,7 +458,7 @@ showSurvey(
               requiredStarColor: requiredStarColor,
               goBackOnSubmit: goBackOnSubmit,
               loadingIndicatorColor: loadingIndicatorColor,
-              isRtl: isRtl,
+              isRtl: isRtl ?? true,
             ));
       },
     ),
