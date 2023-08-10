@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'package:survey/colors.dart';
+import 'package:survey/widgets/colors.dart';
 
 class PatientButton extends StatelessWidget {
   final bool isHollow;

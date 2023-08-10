@@ -1,5 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:survey/colors.dart';
+import 'package:survey/widgets/colors.dart';
 
 /// A class allowing showing toast messages.
 class PatientToast {

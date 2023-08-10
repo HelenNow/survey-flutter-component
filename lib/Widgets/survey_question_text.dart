@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey/colors.dart';
-
+import 'package:survey/widgets/colors.dart';
 class SurveyQuestionText extends StatefulWidget {
   String title;
   dynamic handle;

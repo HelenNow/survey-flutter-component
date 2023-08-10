@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:survey/Blocs/post_survey_bloc/post_survey_bloc.dart';
-import 'package:survey/Blocs/survey_bloc/survey_bloc.dart';
-import 'package:survey/Widgets/loading_indication.dart';
-import 'package:survey/Widgets/survey_question_radio.dart';
-import 'package:survey/Widgets/survey_question_rating.dart';
-import 'package:survey/Widgets/survey_question_text.dart';
-import 'package:survey/colors.dart';
-import 'package:survey/dialog.dart';
-import 'package:survey/survey_model.dart';
-import 'package:survey/toast.dart';
-import 'button.dart';
+import 'package:survey/blocs/post_survey_bloc/post_survey_bloc.dart';
+import 'package:survey/blocs/survey_bloc/survey_bloc.dart';
+import 'package:survey/widgets/loading_indication.dart';
+import 'package:survey/widgets/survey_question_radio.dart';
+import 'package:survey/widgets/survey_question_rating.dart';
+import 'package:survey/widgets/survey_question_text.dart';
+import 'package:survey/widgets/button.dart';
+import 'package:survey/widgets/colors.dart';
+import 'package:survey/widgets/dialog.dart';
+import 'package:survey/widgets/survey_model.dart';
+import 'package:survey/widgets/toast.dart';
 
 class SurveyPage extends StatefulWidget {
   String? scrg;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:survey/colors.dart';
+import 'package:survey/widgets/colors.dart';
 
 class SurveyQuestionRating extends StatefulWidget {
   String title;

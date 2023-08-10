@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey/colors.dart';
+import 'package:survey/widgets/colors.dart';
 
 class RequestDialog extends StatelessWidget {
   final String title;

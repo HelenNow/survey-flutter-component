@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey/colors.dart';
-
+import 'package:survey/widgets/colors.dart';
 class SurveyQuestionRadio extends StatefulWidget {
   dynamic question;
   List<dynamic> options;

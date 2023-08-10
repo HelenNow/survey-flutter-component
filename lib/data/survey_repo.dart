@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:survey/network.dart';
-import 'package:survey/toast.dart';
+import 'package:survey/widgets/toast.dart';
+import 'package:survey/data/network.dart';
 
 class APIRequestSurvey {
   static Future<dynamic> getSurveyQuestions(
