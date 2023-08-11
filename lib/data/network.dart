@@ -35,13 +35,12 @@ class ApiHandler {
           status: responseMap['status'],
         );
       }
-
       return NetworkResponseData(
         hasError: responseMap['error'].toString().isNotEmpty,
         error: responseMap['error'] ?? '',
-        status: responseMap['status'],
-        speech: responseMap['speech'],
-        data: responseMap['result'],
+        status: responseMap['status'] ?? '',
+        speech: responseMap['speech'] ?? '',
+        data: responseMap['result'] ?? '',
       );
     } catch (error) {
       debugPrint(

@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:survey/blocs/post_survey_bloc/post_survey_bloc.dart';
@@ -58,12 +60,25 @@ class _SurveyPageState extends State<SurveyPage> {
   var answers = {};
   ValueNotifier<bool> submitActive = ValueNotifier(false);
   dynamic body;
-  dynamic postBody;
+  Map<String, dynamic> postBody = {};
+  String? uuid;
   @override
   void initState() {
     BlocProvider.of<SurveyBloc>(context)
         .add(SurveyEventRequested(scrg: widget.scrg));
+    initlogging();
     super.initState();
+  }
+
+  initlogging() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) {
+      IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+      uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
+    } else {
+      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
+      uuid = androidDeviceInfo.id; // unique ID on Android
+    }
   }
 
   var validation = [];
@@ -106,8 +121,8 @@ class _SurveyPageState extends State<SurveyPage> {
                   } else if (state is SurveySuccess) {
                     postBody = {
                       'rbrg': widget.rbrg,
-                      "uuid": widget.uuid,
-                      "scrg": state.data!['survey']['scrg'],
+                      "uuid": widget.uuid ?? uuid,
+                      "scrg": widget.scrg ?? state.data['survey']['scrg'],
                       'answers': []
                     };
                     body = state.data;
@@ -178,6 +193,7 @@ class _SurveyPageState extends State<SurveyPage> {
                           // list item builder
                           itemBuilder: (BuildContext ctx, index) {
                             var answer = '';
+
                             if (result[index].type == 'radio') {
                               return SurveyQuestionRadio(
                                   question: result[index].prompt,
@@ -356,10 +372,11 @@ class _SurveyPageState extends State<SurveyPage> {
                                 ),
                               ),
                               onPressed: submitActive.value
-                                  ? () =>
+                                  ? () {
                                       BlocProvider.of<PostSurveyBloc>(context)
                                           .add(PostSurveyEventRequested(
-                                              body: postBody))
+                                              body: postBody));
+                                    }
                                   : () {},
                               child: const Text(
                                 'Submit',
@@ -437,10 +454,11 @@ showSurvey({
             providers: [
               BlocProvider<SurveyBloc>(
                   create: (BuildContext context) =>
-                      SurveyBloc(getUrl, headers)),
+                      SurveyBloc(getUrl, headers, scrg: scrg)),
               BlocProvider<PostSurveyBloc>(
-                  create: (BuildContext context) =>
-                      PostSurveyBloc(postUrl, headers)),
+                create: (BuildContext context) =>
+                    PostSurveyBloc(postUrl, headers),
+              ),
             ],
             child: SurveyPage(
               scrg: scrg,

@@ -6,16 +6,17 @@ import 'package:survey/data/network.dart';
 class APIRequestSurvey {
   static Future<dynamic> getSurveyQuestions(
       dynamic scrg, String url, Map<String, String> urlHeaders) async {
-    NetworkResponseData response;
+    NetworkResponseData? response;
     String? uuid;
 
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (Platform.isIOS) {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
+    } else {
+      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
+      uuid = androidDeviceInfo.id; // unique ID on Android
     }
-    AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-    uuid = androidDeviceInfo.id; // unique ID on Android
 
     try {
       response = await ApiHandler.getRequest(
@@ -24,7 +25,7 @@ class APIRequestSurvey {
         apiFailureMessage: 'Unable to get tips',
       );
     } catch (apiRequestError) {
-      PatientToast.showToast(message: 'Unable to get tips (API)');
+      PatientToast.showToast(message: apiRequestError.toString());
       return null;
     }
 
@@ -33,7 +34,7 @@ class APIRequestSurvey {
 
   static Future<dynamic> postSurveyQuestions(
       dynamic body, String url, Map<String, String> urlHeaders) async {
-    NetworkResponseData response;
+    NetworkResponseData? response;
     try {
       response = await ApiHandler.postRequest(
         url: url,
@@ -42,7 +43,7 @@ class APIRequestSurvey {
         body: body,
       );
     } catch (apiRequestError) {
-      PatientToast.showToast(message: 'Unable to get tips (API)');
+      PatientToast.showToast(message: 'Unable to post QUESTIONS (API)');
       return null;
     }
 
