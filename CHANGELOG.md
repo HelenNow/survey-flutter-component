@@ -1,3 +1,7 @@
+## 1.0.4
+
+- `fix goback`
+
 ## 1.0.3
 
 - `fix error state`

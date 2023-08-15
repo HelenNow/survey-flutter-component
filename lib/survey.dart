@@ -422,7 +422,10 @@ class _SurveyPageState extends State<SurveyPage> {
             vertical: 8,
           ),
           fontSize: ConfigConstants.fontLarge,
-          handleTap: widget.goBackOnSubmit,
+          handleTap: () {
+            Navigator.of(context).pop();
+            widget.goBackOnSubmit;
+          },
         ),
       ),
     );
