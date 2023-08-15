@@ -408,7 +408,7 @@ class _SurveyPageState extends State<SurveyPage> {
   void _showDialog({
     required BuildContext context,
   }) async {
-    await showDialog(
+    final s = await showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) => RequestDialog(
@@ -423,12 +423,14 @@ class _SurveyPageState extends State<SurveyPage> {
           ),
           fontSize: ConfigConstants.fontLarge,
           handleTap: () {
-            Navigator.of(context).pop();
-            widget.goBackOnSubmit;
+            Navigator.of(context).pop(true);
           },
         ),
       ),
     );
+    if (s) {
+      widget.goBackOnSubmit!();
+    }
   }
 }
 
