@@ -118,6 +118,11 @@ class _SurveyPageState extends State<SurveyPage> {
                 builder: (context, state) {
                   if (state is SurveyInProgress) {
                     return const LoadingIndicator();
+                  } else if (state is SurveyFailed ||
+                      (state is SurveySuccess &&
+                          !(state.data != null &&
+                              state.data['survey'] != null))) {
+                    const Center(child: Text('Something went wrong'));
                   } else if (state is SurveySuccess) {
                     postBody = {
                       'rbrg': widget.rbrg,
