@@ -1,3 +1,7 @@
+## 1.0.5
+
+- `github actions`
+
 ## 1.0.4
 
 - `fix goback`
