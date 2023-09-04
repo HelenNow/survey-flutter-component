@@ -1,3 +1,6 @@
+## 1.0.6
+
+- `upgrade dependency`
 ## 1.0.5
 
 - `github actions`
