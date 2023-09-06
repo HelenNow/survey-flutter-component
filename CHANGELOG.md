@@ -1,7 +1,3 @@
-## 1.0.8
-
-- `added showSurvey2 and fixed uuid`
-
 ## 1.0.7
 
 - `added showSurvey2 and fixed uuid`
