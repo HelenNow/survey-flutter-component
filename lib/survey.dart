@@ -942,8 +942,7 @@ showSurvey2({
                   create: (BuildContext context) =>
                       SurveyBloc(getUrl, headers, scrg: scrg)),
               BlocProvider<PostSurvey2Bloc>(
-                create: (BuildContext context) =>
-                    PostSurvey2Bloc(postFunction, headers),
+                create: (BuildContext context) => PostSurvey2Bloc(postFunction),
               ),
             ],
             child: SurveyPage2(

@@ -4,6 +4,6 @@ part of 'post_survey_bloc2.dart';
 abstract class PostSurvey2Event {}
 
 class PostSurvey2EventRequested extends PostSurvey2Event {
-  final dynamic func;
-  PostSurvey2EventRequested({this.func});
+  final dynamic body;
+  PostSurvey2EventRequested({this.body});
 }
