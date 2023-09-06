@@ -1,7 +1,7 @@
 name: survey
 description: Helen Now
 homepage: https://github.com/mkaraki-helen/survey
-version: 1.0.7
+version: 1.0.8
 
 environment:
   sdk: ">=3.0.6 <4.0.0"
