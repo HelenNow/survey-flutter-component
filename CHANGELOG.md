@@ -1,6 +1,11 @@
+## 1.0.7
+
+- `added showSurvey2 and fixed uuid`
+
 ## 1.0.6
 
 - `upgrade dependency`
+
 ## 1.0.5
 
 - `github actions`

@@ -21,7 +21,7 @@ class APIRequestSurvey {
     try {
       response = await ApiHandler.getRequest(
         customHeaders: urlHeaders,
-        url: url.replaceAll('{scrgval}', scrg).replaceAll('{uuidval}', uuid),
+        url: url.replaceAll('{scrgval}', scrg).replaceAll('{uuidval}', uuid!),
         apiFailureMessage: 'Unable to get tips',
       );
     } catch (apiRequestError) {
