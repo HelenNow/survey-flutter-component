@@ -1,7 +1,10 @@
 ## 1.0.10
 
-- `fixed blocs`
+- `show dialog fixed`
 
+## 1.0.10
+
+- `fixed blocs`
 
 ## 1.0.9
 
