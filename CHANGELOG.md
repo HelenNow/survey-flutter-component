@@ -1,3 +1,6 @@
+## 1.0.12
+
+- `device uuid fix`
 ## 1.0.11
 
 - `device uuid fix`

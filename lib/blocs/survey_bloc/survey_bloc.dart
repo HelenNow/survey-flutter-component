@@ -6,7 +6,8 @@ part 'survey_event.dart';
 part 'survey_state.dart';
 
 class SurveyBloc extends Bloc<SurveyEvent, SurveyState> {
-  SurveyBloc(String getUrl, Map<String, String> headers, {String? scrg})
+  SurveyBloc(String getUrl, Map<String, String> headers, String uuid,
+      {String? scrg})
       : super(SurveyInitial()) {
     on<SurveyEventRequested>((event, emit) async {
       emit(SurveyInProgress());
@@ -15,6 +16,7 @@ class SurveyBloc extends Bloc<SurveyEvent, SurveyState> {
           scrg ?? event.scrg,
           getUrl,
           headers,
+          uuid,
         );
         emit(SurveySuccess(data: response));
       } catch (e) {

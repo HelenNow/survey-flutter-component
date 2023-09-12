@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:survey/data/survey_repo.dart';
 part 'post_survey_event2.dart';
 part 'post_survey_state2.dart';
 

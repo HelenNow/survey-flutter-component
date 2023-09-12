@@ -425,6 +425,7 @@ showSurvey({
   required String getUrl,
   required String postUrl,
   required Map<String, String> headers,
+  required String uuid,
   String? scrg,
   String? rbrg,
   Decoration? decoration,
@@ -436,7 +437,6 @@ showSurvey({
   int? submitButtonTextSize,
   Color? radioActiveColor,
   Color? radioTextcoLOR,
-  String? uuid,
   Color? requiredStarColor,
   VoidCallback? goBackOnSubmit,
   Color? loadingIndicatorColor,
@@ -450,7 +450,7 @@ showSurvey({
             providers: [
               BlocProvider<SurveyBloc>(
                   create: (BuildContext context) =>
-                      SurveyBloc(getUrl, headers, scrg: scrg)),
+                      SurveyBloc(getUrl, headers, uuid, scrg: scrg)),
               BlocProvider<PostSurveyBloc>(
                 create: (BuildContext context) =>
                     PostSurveyBloc(postUrl, headers),
@@ -888,6 +888,7 @@ showSurvey2({
   required String getUrl,
   required Function postFunction,
   required Map<String, String> headers,
+  required String uuid,
   String? scrg,
   Decoration? decoration,
   Color? backArrowColor,
@@ -898,7 +899,6 @@ showSurvey2({
   int? submitButtonTextSize,
   Color? radioActiveColor,
   Color? radioTextcoLOR,
-  String? uuid,
   Color? requiredStarColor,
   VoidCallback? goBackOnSubmit,
   Color? loadingIndicatorColor,
@@ -912,7 +912,7 @@ showSurvey2({
             providers: [
               BlocProvider<SurveyBloc>(
                   create: (BuildContext context) =>
-                      SurveyBloc(getUrl, headers, scrg: scrg)),
+                      SurveyBloc(getUrl, headers, uuid, scrg: scrg)),
               BlocProvider<PostSurvey2Bloc>(
                 create: (BuildContext context) => PostSurvey2Bloc(postFunction),
               ),
