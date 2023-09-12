@@ -1,3 +1,7 @@
+## 1.0.13
+
+- `check response status`
+
 ## 1.0.12
 
 - `device uuid fix`
