@@ -1,3 +1,8 @@
+## 1.0.10
+
+- `fixed blocs`
+
+
 ## 1.0.9
 
 - `added body`

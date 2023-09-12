@@ -809,12 +809,12 @@ class _SurveyPage2State extends State<SurveyPage2> {
               const SizedBox(
                 height: 12,
               ),
-              BlocConsumer<PostSurveyBloc, PostSurveyState>(
+              BlocConsumer<PostSurvey2Bloc, PostSurvey2State>(
                   listener: (context, state) {},
                   builder: (context, state) {
-                    if (state is PostSurveyInProgress) {
+                    if (state is PostSurvey2InProgress) {
                       return const LoadingIndicator();
-                    } else if (state is PostSurveySuccess) {
+                    } else if (state is PostSurvey2Success) {
                       if (state.data == 'ok') {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           _showDialog(context: context);
@@ -855,8 +855,8 @@ class _SurveyPage2State extends State<SurveyPage2> {
                               ),
                               onPressed: submitActive.value
                                   ? () {
-                                      BlocProvider.of<PostSurveyBloc>(context)
-                                          .add(PostSurveyEventRequested(
+                                      BlocProvider.of<PostSurvey2Bloc>(context)
+                                          .add(PostSurvey2EventRequested(
                                               body: postBody));
                                     }
                                   : () {},
