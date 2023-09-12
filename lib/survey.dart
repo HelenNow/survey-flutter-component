@@ -319,7 +319,11 @@ class _SurveyPageState extends State<SurveyPage> {
                 height: 12,
               ),
               BlocConsumer<PostSurveyBloc, PostSurveyState>(
-                  listener: (context, state) {},
+                  listenWhen: (previous, current) =>
+                      previous != current && current is PostSurveyFailed,
+                  listener: (context, state) {
+                    PatientToast.showToast(message: 'Error occured');
+                  },
                   builder: (context, state) {
                     if (state is PostSurveyInProgress) {
                       return const LoadingIndicator();

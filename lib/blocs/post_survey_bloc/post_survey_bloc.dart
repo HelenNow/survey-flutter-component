@@ -12,6 +12,7 @@ class PostSurveyBloc extends Bloc<PostSurveyEvent, PostSurveyState> {
       try {
         var response = await APIRequestSurvey.postSurveyQuestions(
             event.body, postUrl, headers);
+        debugPrint(response);
         emit(PostSurveySuccess(data: response));
       } catch (e) {
         emit(PostSurveyFailed());

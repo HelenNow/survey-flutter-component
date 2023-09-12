@@ -1,3 +1,6 @@
+## 1.0.16
+
+- `handle error`
 ## 1.0.15
 
 - `handle error`
