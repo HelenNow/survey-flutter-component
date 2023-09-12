@@ -1,3 +1,7 @@
+## 1.0.14
+
+- `remove package device info`
+
 ## 1.0.13
 
 - `check response status`
@@ -5,9 +9,11 @@
 ## 1.0.12
 
 - `device uuid fix`
+
 ## 1.0.11
 
 - `device uuid fix`
+
 ## 1.0.10
 
 - `show dialog fixed`
