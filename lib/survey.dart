@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:survey/blocs/post_survey_bloc/post_survey_bloc.dart';
@@ -62,24 +60,11 @@ class _SurveyPageState extends State<SurveyPage> {
   ValueNotifier<bool> submitActive = ValueNotifier(false);
   dynamic body;
   Map<String, dynamic> postBody = {};
-  String? uuid;
   @override
   void initState() {
     BlocProvider.of<SurveyBloc>(context)
         .add(SurveyEventRequested(scrg: widget.scrg));
-    initlogging();
     super.initState();
-  }
-
-  initlogging() async {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    if (Platform.isIOS) {
-      IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
-      uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
-    } else {
-      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-      uuid = androidDeviceInfo.id; // unique ID on Android
-    }
   }
 
   var validation = [];
@@ -127,7 +112,7 @@ class _SurveyPageState extends State<SurveyPage> {
                   } else if (state is SurveySuccess) {
                     postBody = {
                       'rbrg': widget.rbrg,
-                      "uuid": widget.uuid ?? uuid,
+                      "uuid": widget.uuid,
                       "scrg": widget.scrg ?? state.data['survey']['scrg'],
                       'answers': []
                     };
@@ -539,24 +524,11 @@ class _SurveyPage2State extends State<SurveyPage2> {
   ValueNotifier<bool> submitActive = ValueNotifier(false);
   dynamic body;
   Map<String, dynamic> postBody = {};
-  String? uuid;
   @override
   void initState() {
     BlocProvider.of<SurveyBloc>(context)
         .add(SurveyEventRequested(scrg: widget.scrg));
-    initlogging();
     super.initState();
-  }
-
-  initlogging() async {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    if (Platform.isIOS) {
-      IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
-      uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
-    } else {
-      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-      uuid = androidDeviceInfo.androidId; // unique ID on Android
-    }
   }
 
   var validation = [];
@@ -603,7 +575,7 @@ class _SurveyPage2State extends State<SurveyPage2> {
                     const Center(child: Text('Something went wrong'));
                   } else if (state is SurveySuccess) {
                     postBody = {
-                      "uuid": widget.uuid ?? uuid,
+                      "uuid": widget.uuid,
                       "scrg": widget.scrg ?? state.data['survey']['scrg'],
                       'answers': []
                     };

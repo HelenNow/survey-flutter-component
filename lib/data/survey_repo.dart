@@ -1,27 +1,15 @@
-import 'dart:io';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:survey/widgets/toast.dart';
 import 'package:survey/data/network.dart';
 
 class APIRequestSurvey {
-  static Future<dynamic> getSurveyQuestions(
-      dynamic scrg, String url, Map<String, String> urlHeaders) async {
+  static Future<dynamic> getSurveyQuestions(dynamic scrg, String url,
+      Map<String, String> urlHeaders, String uuid) async {
     NetworkResponseData? response;
-    String? uuid;
-
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    if (Platform.isIOS) {
-      IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
-      uuid = iosDeviceInfo.identifierForVendor!; // unique ID on iOS
-    } else {
-      AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-      uuid = androidDeviceInfo.id; // unique ID on Android
-    }
 
     try {
       response = await ApiHandler.getRequest(
         customHeaders: urlHeaders,
-        url: url.replaceAll('{scrgval}', scrg).replaceAll('{uuidval}', uuid!),
+        url: url.replaceAll('{scrgval}', scrg).replaceAll('{uuidval}', uuid),
         apiFailureMessage: 'Unable to get tips',
       );
     } catch (apiRequestError) {
