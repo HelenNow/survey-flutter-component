@@ -323,6 +323,8 @@ class _SurveyPageState extends State<SurveyPage> {
                   builder: (context, state) {
                     if (state is PostSurveyInProgress) {
                       return const LoadingIndicator();
+                    } else if (state is PostSurveyFailed) {
+                      PatientToast.showToast(message: 'Error occured');
                     } else if (state is PostSurveySuccess) {
                       if (state.data == 'ok') {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
