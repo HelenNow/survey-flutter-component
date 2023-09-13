@@ -795,11 +795,15 @@ class _SurveyPage2State extends State<SurveyPage2> {
                     if (state is PostSurvey2InProgress) {
                       return const LoadingIndicator();
                     } else if (state is PostSurvey2Success) {
-                      if (state.data == 'ok') {
+                      if (state.data.status == 'ok') {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           _showDialog(context: context);
                         });
                       }
+                    } else if (state is PostSurveyFailed) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        PatientToast.showToast(message: 'Error occured');
+                      });
                     }
                     return ValueListenableBuilder(
                         valueListenable: submitActive,
