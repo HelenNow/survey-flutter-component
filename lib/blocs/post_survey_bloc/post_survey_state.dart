@@ -12,4 +12,7 @@ class PostSurveySuccess extends PostSurveyState {
   PostSurveySuccess({this.data});
 }
 
-class PostSurveyFailed extends PostSurveyState {}
+class PostSurveyFailed extends PostSurveyState {
+  final dynamic data;
+  PostSurveyFailed({this.data});
+}

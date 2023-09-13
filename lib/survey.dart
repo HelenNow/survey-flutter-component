@@ -322,14 +322,18 @@ class _SurveyPageState extends State<SurveyPage> {
                   listenWhen: (previous, current) =>
                       previous != current && current is PostSurveyFailed,
                   listener: (context, state) {
-                    PatientToast.showToast(message: 'Error occured');
+                    if (state is PostSurveyFailed) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        PatientToast.showToast(message: state.data);
+                      });
+                    }
                   },
                   builder: (context, state) {
                     if (state is PostSurveyInProgress) {
                       return const LoadingIndicator();
                     } else if (state is PostSurveyFailed) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
-                        PatientToast.showToast(message: 'Error occured');
+                        PatientToast.showToast(message: state.data);
                       });
                     } else if (state is PostSurveySuccess) {
                       if (state.data == 'ok') {
@@ -407,7 +411,7 @@ class _SurveyPageState extends State<SurveyPage> {
       barrierDismissible: false,
       builder: (BuildContext context) => RequestDialog(
         title:
-            "Thank you for completing the survey. We appretiate you spending the time!",
+            "Thank you for completing the survey. We appreciate you spending the time!",
         bottomWidget: PatientButton(
           text: "Okay",
           backgroundColor: ConfigConstants.red,
@@ -790,7 +794,15 @@ class _SurveyPage2State extends State<SurveyPage2> {
                 height: 12,
               ),
               BlocConsumer<PostSurvey2Bloc, PostSurvey2State>(
-                  listener: (context, state) {},
+                  listenWhen: (previous, current) =>
+                      previous != current && current is PostSurvey2Failed,
+                  listener: (context, state) {
+                    if (state is PostSurvey2Failed) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        PatientToast.showToast(message: state.data);
+                      });
+                    }
+                  },
                   builder: (context, state) {
                     if (state is PostSurvey2InProgress) {
                       return const LoadingIndicator();
@@ -800,9 +812,10 @@ class _SurveyPage2State extends State<SurveyPage2> {
                           _showDialog(context: context);
                         });
                       }
-                    } else if (state is PostSurveyFailed) {
+                    } else if (state is PostSurvey2Failed) {
+                      debugPrint('builder error');
                       WidgetsBinding.instance.addPostFrameCallback((_) {
-                        PatientToast.showToast(message: 'Error occured');
+                        PatientToast.showToast(message: state.data);
                       });
                     }
                     return ValueListenableBuilder(
@@ -874,7 +887,7 @@ class _SurveyPage2State extends State<SurveyPage2> {
       barrierDismissible: false,
       builder: (BuildContext context) => RequestDialog(
         title:
-            "Thank you for completing the survey. We appretiate you spending the time!",
+            "Thank you for completing the survey. We appreciate you spending the time!",
         bottomWidget: PatientButton(
           text: "Okay",
           backgroundColor: ConfigConstants.red,

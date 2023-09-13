@@ -1,7 +1,42 @@
-## 1.0.20
+## 1.0.29
 
 - `handle error`
 
+## 1.0.28
+
+- `handle error`
+
+## 1.0.27
+
+- `handle error`
+
+## 1.0.26
+
+- `handle error`
+
+## 1.0.25
+
+- `handle error`
+
+## 1.0.24
+
+- `handle error`
+
+## 1.0.23
+
+- `handle error`
+
+## 1.0.22
+
+- `handle error`
+
+## 1.0.21
+
+- `handle error`
+
+## 1.0.20
+
+- `handle error`
 
 ## 1.0.19
 
